@@ -177,7 +177,7 @@ namespace CitiesSkylines
                             string m_Key = regex.Match(lines[i]).Groups[2].Value.Length != 0 ? regex.Match(lines[i]).Groups[2].Value : null;
                             string msgid = regex_msgid.Match(lines[i + 1]).Groups[1].Value;
                             string msgstr = regex_msgstr.Match(lines[i + 2]).Groups[1].Value;
-                            if (msgid.Length != 0 && msgstr.Length != 0)
+                            if (msgid.Length != 0)
                             {
                                 Locale.Key key = new Locale.Key();
                                 key.m_Identifier = m_Identifier;
@@ -186,11 +186,11 @@ namespace CitiesSkylines
                                 if (l_LocalizedStrings.ContainsKey(key))
                                 {
                                     l_LocalizedStrings.Remove(key);
-                                    l_LocalizedStrings.Add(key, msgstr.Replace(@"\r", "\r").Replace(@"\n", "\n"));
+                                    l_LocalizedStrings.Add(key, msgid.Replace(@"\r", "\r").Replace(@"\n", "\n"));
                                 }
                                 else
                                 {
-                                    l_LocalizedStrings.Add(key, msgstr.Replace(@"\r", "\r").Replace(@"\n", "\n"));
+                                    l_LocalizedStrings.Add(key, msgid.Replace(@"\r", "\r").Replace(@"\n", "\n"));
                                 }
                             }
                         }
